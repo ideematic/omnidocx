@@ -303,7 +303,9 @@ module Omnidocx
                 #writing the files not needed to be edited back to the new zip (only from the first document, so as to avoid duplication)
                 if doc_cnt == 0
                   zos.put_next_entry(e.name)
-                  zos.print e.get_input_stream.read
+                  if e.get_input_stream
+                    zos.print e.get_input_stream.read
+                  end
                 end
               end
             end
